@@ -1,0 +1,65 @@
+### 게시글 등록
+POST http://localhost:6000/boards/
+Content-Type: application/json
+
+{
+  "value": "content5",
+  "contents": "하  받는다 에잉...",
+  "title": "상경이글쓴다2",
+  "userId": 312,
+  "categoryId": 2
+}
+
+### 전체 게시글 조회
+GET http://localhost:6000/boards/
+Accept: application/json
+
+
+### GET 아이디별 게시글 조회, "유저" 아이디가 1인 게시글 조회
+GET http://localhost:6000/boards/board?id=311&idType=1
+Accept: application/json
+
+### GET 아이디별 게시글 조회, "게시글" 아이디가 54 게시글 조회
+GET http://localhost:6000/boards/board?id=54&idType=2
+Accept: application/json
+
+### GET 아이디별 게시글 조회, "게시글 카테고리"가 2인 게시글 전체 조회
+GET http://localhost:6000/boards/board?id=2&idType=3
+Accept: application/json
+
+### GET 검색어별 조회, 쿼리 가지고 조회한다.
+GET http://localhost:6000/boards/search?question=스트레스
+Accept: application/json
+
+### PUT 게시글 아이디를 통한 게시글 삭제.4 7 게시글 지울게요.
+PUT http://localhost:6000/boards/delete/47
+
+### PUT 게시글 아이디를 통한 삭제 게시글 복구. 41번 게시글 복구할게요.
+PUT http://localhost:6000/boards/restore/47
+
+
+### PATCH 게시글 아이디를 통한 게시글 수정.
+PATCH http://localhost:6000/boards/44
+Content-Type: application/json
+
+{
+  "contents": "제발 되라 stub이든 mock이든 잠좀자게22",
+  "title": "업데이트 테스트를 위한 게시글 수정2",
+  "user_id": 5
+}
+
+
+### DELETE 게시글 아이디를 통한 게시글 hard 삭제. 6번 게시글 지울게요.
+DELETE http://localhost:6000/boards/delete/2
+
+
+### PATCH 게시글에 댓글을 달아봅시다.
+PATCH http://localhost:6000/boards/reply/54
+Content-Type: application/json
+
+{
+  "content": "안녕하세요 대혁이에여~",
+  "boardId": 54,
+  "userId": 16
+}
+
